@@ -1,0 +1,17 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title size="small">Nivel: {{nivel.name}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <!-- <ion-title size="small">Nivel: {{nivel.nombre}}</ion-title> -->
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content class="ion-padding">
+    <app-fila *ngFor="let item of numFilas;index as i" [palabra]="palabra" [letras]="letras"></app-fila>
+  </ion-content>
+</ion-content>
