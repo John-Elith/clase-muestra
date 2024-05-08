@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { CapacitorHttp, HttpResponse } from '@capacitor/core';
 
 @Component({
   selector: 'app-jugar',
@@ -17,22 +18,27 @@ export class JugarPage implements OnInit {
 
   public numFilas: number[] = []
 
-  public palabras: any[] = [
-    'acaba', 'dabas', 'dados', 'dalia', 'damas', 'dante',
-    'hacen', 'hacer', 'hacha', 'zorra', 'viaje', 'viche'
-  ]
+  public palabras: any[] = []
   public palabra: string = ''
   public letras: string[] = []
   constructor(
     public activedRoute: ActivatedRoute
   ) { }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.id = this.activedRoute.snapshot.params['id']
     this.nivel = this.opciones.find((item: any) => item.id == this.id)
     this.numFilas = Array(this.nivel.opc).fill(0).map((x,i)=>i);
-
-    const rand = Math.ceil(Math.random()*this.palabras.length)
+    const options = {
+      url: 'http://127.0.0.1:8000/api/palabras',
+    };
+  
+    const response: HttpResponse = await CapacitorHttp.get(options);
+    response.data.forEach((item: any) => {
+      this.palabras.push(item.palabra)
+    });
+        
+    const rand = Math.floor(Math.random()*this.palabras.length)
     this.palabra = this.palabras[rand]
     this.letras = this.palabra.split('')
     console.log(this.letras);
