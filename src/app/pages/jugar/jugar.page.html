@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title size="small">Nivel: {{nivel.name}}</ion-title>
+    <!-- <ion-title size="small">Nivel: {{nivel.name}}</ion-title> -->
   </ion-toolbar>
 </ion-header>
 
@@ -12,6 +12,12 @@
   </ion-header>
 
   <ion-content class="ion-padding">
+    <p>Tiempo transcurrido: {{ contador }}</p>
+
+    <h1>La palabra del día: </h1>
+    
     <app-fila *ngFor="let item of numFilas;index as i" [palabra]="palabra" [letras]="letras"></app-fila>
+
+    
   </ion-content>
 </ion-content>

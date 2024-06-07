@@ -11,7 +11,7 @@ export class FilaComponent  implements OnInit {
   constructor() { }
 
   ngOnInit() {
-
+  
     return 0
   }
 

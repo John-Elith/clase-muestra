@@ -13,6 +13,7 @@ export class CeldaComponent  implements OnInit {
   constructor() { }
 
   ngOnInit() {
+   
     return 0
   }
 
